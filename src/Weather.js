@@ -19,7 +19,6 @@ const Weather = () => {
             const url = `http://api.openweathermap.org/data/2.5/weather?q=${search}&units=${unit}&appid=c28637e1ffa48c814c2d6036508efcc1`
             const response = await fetch(url)
             const data = await response.json()
-            console.log(data)
             setCityName(data.name)
             setWeather(data.weather[0])
             setSys(data.sys)
