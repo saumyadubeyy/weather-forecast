@@ -1,0 +1,93 @@
+.blink{
+    animation: blinkingText 1.2s infinite;
+    text-align: center;
+}
+
+@keyframes blinkingText{
+    0%{     color: red;    }
+    49%{    color: red; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: red;    }
+}
+
+.noBlink{
+    color: black;
+    opacity: 0;
+}
+
+
+form{
+    display: grid;
+    place-items: center;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.2rem 3rem #c6ccd8;
+    padding: 10px;
+    background-color: #0f7e9b;
+    background: linear-gradient(#0f7e9b,#92d7ef);
+    /* background-color: #845460;
+    background: linear-gradient(#845460,#92d7ef); */
+    
+}
+.btn{
+    font-weight: bold;
+    padding: 6px;
+    margin-top: 3px;
+}
+h2{
+    text-align: center;
+}
+
+.radio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date{
+    text-align: center;
+}
+button{
+    cursor: pointer;
+}
+.forecast{
+    background-color: #0f7e9b;
+    background: linear-gradient(#0f7e9b,#92d7ef);
+    padding: 10px;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 3rem grey;
+    text-align: center;
+}
+.heading{
+    font-size: 40px;
+    margin-top: 10px;
+}
+.icon{
+    display: inline-block;
+    position: relative;
+    right: 20px;
+    bottom: 40px;
+}
+.temp{
+    display: inline-block;
+    position: relative;
+    left: 16px;
+    bottom: 40px;
+}
+.mainTemp{
+    font-size: 70px;
+    position: relative;
+    bottom: 20px;
+}
+
+.margin{
+    margin: 0;
+}
+.size{
+    font-size: 14px;
+}
+.minmax{
+    position: relative;
+    padding: 10px;
+    bottom: 20px;
+}
