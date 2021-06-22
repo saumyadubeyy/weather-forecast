@@ -36,7 +36,7 @@ const Weather = () => {
                 setShowUnit("C")
             }
         } catch(error){
-            console.log(error)
+            console.log("YOU HAVE ENTERED AN INVALID CITY")
         }            
     }
 
@@ -105,8 +105,7 @@ const Weather = () => {
                     <div className="forecast clear">
                         <h2 className="heading">{cityName}</h2>
                         <div className="icon" >
-                            {/* <img src={`./Images/${weather.icon}.png`} alt="icon"/>  */}
-                            <img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="icon"/> 
+                            <img src={`https://openweathermap.org/img/w/${weather.icon}.png`} alt="icon"/> 
                             <h3 className="margin size" style={{textTransform: 'capitalize'}}>{weather.description}</h3>
                         </div>
                         <div className="temp">
