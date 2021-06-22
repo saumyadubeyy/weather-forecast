@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import moment from 'moment'
 import './Weather.css'
 
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY
+
 const Weather = () => {
 
     const [search, setSearch] = useState('')
@@ -16,7 +18,7 @@ const Weather = () => {
     const fetchData = async (e) => {
         e.preventDefault();
         try{
-            const url = `http://api.openweathermap.org/data/2.5/weather?q=${search}&units=${unit}&appid=c28637e1ffa48c814c2d6036508efcc1`
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=${unit}&appid=${API_KEY}`
             const response = await fetch(url)
             const data = await response.json()
             setCityName(data.name)
@@ -35,8 +37,7 @@ const Weather = () => {
             }
         } catch(error){
             console.log(error)
-        }
-            
+        }            
     }
 
     const sunrise = new Date(sys.sunrise *1000) ;
@@ -104,7 +105,8 @@ const Weather = () => {
                     <div className="forecast clear">
                         <h2 className="heading">{cityName}</h2>
                         <div className="icon" >
-                            <img src={`./icons/${weather.icon}.png`} alt="icon"/> 
+                            {/* <img src={`./Images/${weather.icon}.png`} alt="icon"/>  */}
+                            <img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="icon"/> 
                             <h3 className="margin size" style={{textTransform: 'capitalize'}}>{weather.description}</h3>
                         </div>
                         <div className="temp">

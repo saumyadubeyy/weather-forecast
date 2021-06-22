@@ -60,7 +60,7 @@ button{
 }
 .heading{
     font-size: 40px;
-    margin-top: 10px;
+    margin: 5px auto 40px;
 }
 .icon{
     display: inline-block;
@@ -68,6 +68,12 @@ button{
     right: 20px;
     bottom: 40px;
 }
+
+.icon img{
+    height: 80px;
+    width: auto;
+}
+
 .temp{
     display: inline-block;
     position: relative;
@@ -75,9 +81,10 @@ button{
     bottom: 40px;
 }
 .mainTemp{
-    font-size: 70px;
+    font-size: 60px;
     position: relative;
-    bottom: 20px;
+    bottom: 5px;
+    left: 15px;
 }
 
 .margin{
