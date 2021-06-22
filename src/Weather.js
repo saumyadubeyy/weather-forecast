@@ -36,7 +36,7 @@ const Weather = () => {
                 setShowUnit("C")
             }
         } catch(error){
-            console.log("YOU HAVE ENTERED AN INVALID CITY")
+            console.clear()
         }            
     }
 
