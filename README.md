@@ -1,3 +1,4 @@
-![Weather-Forecast](https://user-images.githubusercontent.com/56453693/122956987-1fb2bb80-d39f-11eb-9bbe-5c957659104a.JPG)
-![Weather-Forecast-2](https://user-images.githubusercontent.com/56453693/122956994-22151580-d39f-11eb-8577-c88f5f82b13e.JPG)
-![Weather-Forecast-3](https://user-images.githubusercontent.com/56453693/122957003-23ded900-d39f-11eb-9570-e63b61a8c7ae.JPG)
+![image](https://user-images.githubusercontent.com/56453693/125600316-1c12d2f9-1960-44a4-b8fb-2383f2c7415f.png)
+![image](https://user-images.githubusercontent.com/56453693/125600378-cd439806-5729-456b-b62c-31f366062859.png)
+![image](https://user-images.githubusercontent.com/56453693/125600528-a8d6fa1b-30b8-441d-9636-8c914c8cd4a1.png)
+![image](https://user-images.githubusercontent.com/56453693/125600451-a5669b83-7250-488b-b704-bb309a676d9c.png)
