@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import moment from 'moment'
 import './Weather.css'
 
@@ -12,8 +12,10 @@ const Weather = () => {
     const [cityName, setCityName] = useState('')
     const [weather, setWeather] = useState('')
     const [sys, setSys] = useState('')
-    let [err, setErr] = useState(false)
+    const [err, setErr] = useState(false)
     let [showUnit, setShowUnit] = useState('')
+
+    
 
     const fetchData = async (e) => {
         e.preventDefault();
@@ -24,21 +26,29 @@ const Weather = () => {
             setCityName(data.name)
             setWeather(data.weather[0])
             setSys(data.sys)
-            setData(data.main)  
-            if(!cityName){
-                setErr(true)
-            } else{
-                setErr(false)
-            }
+            setData(data.main)             
             if(unit==="imperial"){
                 setShowUnit("F")
             } else{
                 setShowUnit("C")
             }
         } catch(error){
-            console.clear()
+            setErr(true)
         }            
     }
+
+    const [size, setSize] = useState(window.innerWidth);
+    const checkSize = () => {
+        setSize(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", checkSize);
+        return () => {
+        window.removeEventListener("resize", checkSize);
+        };
+    });
+
 
     const sunrise = new Date(sys.sunrise *1000) ;
     const time_sunrise =  sunrise.toLocaleTimeString({},
@@ -54,52 +64,51 @@ const Weather = () => {
     const date = moment(new Date()).format('DD MMMM YYYY')
     const time = moment().format("h:mm A")
     
+    
 
     return (
-        <div className="main">  
+        <div >  
             <h2>Weather Forecast</h2>        
-            <form onSubmit={fetchData}>
-                <div>
-                    <input 
-                        type="search"
-                        placeholder="Enter City"
-                        maxLength="20"
-                        style={{textTransform: 'capitalize'}}
-                        onChange={(e) =>setSearch(e.target.value) }
-                    />
-                </div>
-                <label className="radio"> 
-                    <input 
-                        type="radio"
-                        name="units"
-                        checked={unit === "imperial"}
-                        value="imperial"
-                        onChange={(e) => setUnit(e.target.value)}
-                    /> Fahrenheit
-                </label>
-                <label className="radio">
-                    <input
-                        type="radio"
-                        name="units"
-                        checked={unit === "metric"}
-                        value="metric"
-                        onChange={(e) => setUnit(e.target.value)}
+            <div className="main">
+                <form onSubmit={fetchData}>
+                    <div>
+                        <input 
+                            type="search"
+                            placeholder="Enter City"
+                            maxLength="20"
+                            style={{textTransform: 'capitalize'}}
+                            onChange={(e) =>setSearch(e.target.value) }
                         />
-                    Celcius
-                </label>
-                    <button type="submit" className="btn">Get Forecast</button>             
-            </form>
-            {
-                    !cityName? (
-                        <h4 className= {err? "blink" : "noBlink"}>Please enter a valid city name</h4>
-                    ) : (
-                        <h4 className="date">{date}, {time}</h4>
-                    )
-                } 
+                    </div>
+                    <label className="radio"> 
+                        <input 
+                            type="radio"
+                            name="units"
+                            checked={unit === "imperial"}
+                            value="imperial"
+                            onChange={(e) => setUnit(e.target.value)}
+                        /> Fahrenheit
+                    </label>
+                    <label className="radio">
+                        <input
+                            type="radio"
+                            name="units"
+                            checked={unit === "metric"}
+                            value="metric"
+                            onChange={(e) => setUnit(e.target.value)}
+                            />
+                        Celcius
+                    </label>
+                        <button type="submit" className="btn">Get Forecast</button>             
+                </form>
+            </div>
+            
+                            
             <div className="data">
+                <h4 className="date">{date}, {time}</h4>
             {
                 !cityName? (
-                    <h3>Your data will be displayed here</h3>
+                    <h3 className= { err ? "blink" : ""} style={{textAlign: "center"}}>Enter valid city name</h3>
                 ):
                 (
                     <div className="forecast clear">
@@ -110,13 +119,14 @@ const Weather = () => {
                         </div>
                         <div className="temp">
                             <h3 className="margin mainTemp">{data.temp} °{showUnit}</h3>
-                            <h4 className="margin size">Feels like {data.feels_like} °{showUnit}</h4>
+                            <h4 className="margin size screen">Feels like {data.feels_like} °{showUnit}</h4>
                         </div>
                         <div className="minmax">
-                            <h4 className="margin">Min temperature: {data.temp_min} °{showUnit} || Max temperature: {data.temp_max} °{showUnit}</h4>
+                            <h4 className="margin">Min temperature: {data.temp_min} °{showUnit}</h4>
+                            <h4 className="margin">Max temperature: {data.temp_max} °{showUnit}</h4>
                         </div>
                         <div>
-                            <h3 className="margin">Sunrise: {time_sunrise} || Sunset: {time_sunset}</h3>
+                            <h3 className="margin">Sunrise: {time_sunrise} <span> {size <= 420 ? <br /> : ""}Sunset: {time_sunset}</span></h3>
                         </div>             
                     </div>
                 )
