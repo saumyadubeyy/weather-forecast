@@ -34,7 +34,7 @@ const Weather = () => {
             }
         } catch(error){
             setErr(true)
-        }            
+        }           
     }
 
     const [size, setSize] = useState(window.innerWidth);
@@ -99,7 +99,7 @@ const Weather = () => {
                             />
                         Celcius
                     </label>
-                        <button type="submit" className="btn">Get Forecast</button>             
+                        <button type="submit" className="btn" >Get Forecast</button>             
                 </form>
             </div>
             
